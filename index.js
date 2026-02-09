@@ -5,12 +5,13 @@ const http = require('http');
 const server = http.createServer(app);
 const io = new Server(server);
 const port = 3000;
-const publicPath = "/workspaces/simple-website-setup/public"
+
+app.use(express.static(__dirname + '/public'));
+
 app.get('/', (req, res) => {
-    res.sendFile(publicPath + '/index.html');
+    res.sendFile(__dirname + '/public/index.html');
 });
 
 server.listen(port, () => {
     console.log(`server is listening on port: ${port}`);
 })
-
